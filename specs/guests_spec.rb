@@ -20,6 +20,8 @@ class TestGuest < MiniTest::Test
     assert_equal('Song 2', @guest1.fav_song)
   end
 
+  # Make functions for requesting entry to pub and bar checking capacity.
+
 
 
 
