@@ -8,6 +8,10 @@ class Guest
     @fav_song = fav_song
   end
 
+  def request_entry_to_pub(pub)
+    pub.allow_entry_to_pub(self)
+  end
+
 
 
 end

@@ -1,11 +1,16 @@
 require('minitest/autorun')
 require('minitest/rg')
 require_relative('../guests')
+require_relative('../karaokebar')
+require('pry')
 
 class TestGuest < MiniTest::Test
 
   def setup
     @guest1 = Guest.new('Brian', 40, 'Song 2')
+    @guest2 = Guest.new('Lisa', 20, 'Blue Monday')
+    @guest3 = Guest.new('Dave', 10, 'Live Forever')
+    @karaokebar = Karaoke_bar.new('Lyricz', 5)
   end
 
   def test_name
@@ -20,7 +25,16 @@ class TestGuest < MiniTest::Test
     assert_equal('Song 2', @guest1.fav_song)
   end
 
-  # Make functions for requesting entry to pub and bar checking capacity.
+  def test_request_entry_to_pub__successful
+    @guest1.request_entry_to_pub(@karaokebar)
+    assert_equal(1, @karaokebar.people_in_pub)
+  end
+
+  def test_request_entry_to_pub__unsuccessful
+    @guest1.request_entry_to_pub(@karaokebar)
+    @guest2.request_entry_to_pub(@karaokebar)
+    assert_equal("Sorry, we're full!", @guest3.request_entry_to_pub(@karaokebar))
+  end
 
 
 
