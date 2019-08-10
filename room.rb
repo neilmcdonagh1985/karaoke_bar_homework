@@ -1,10 +1,11 @@
 class Room
 
-  attr_reader :capacity, :playlist
+  attr_reader :capacity, :playlist, :people_in_room
 
   def initialize(capacity)
     @capacity = capacity
     @playlist = []
+    @people_in_room = 0
     # @song_currently_playing = @playlist.pop
   end
 
@@ -13,7 +14,15 @@ class Room
   end
 
   def play_song(song)
-    p "Playing #{song.title} by #{song.artist}..."
+    "Playing #{song.title} by #{song.artist}..."
+  end
+
+  def allow_entry_to_room(guest)
+    if @people_in_room < @capacity
+      @people_in_room += 1
+    else
+      return "Sorry, this room is full!"
+    end
   end
 
 

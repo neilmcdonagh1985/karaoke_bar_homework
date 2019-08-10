@@ -19,8 +19,9 @@ class Karaoke_bar
   def allow_entry_to_pub(guest)
     if @people_in_pub < @total_capacity
     @people_in_pub += 1
+  else
+    return "Sorry, we're full!"
   end
-  return "Sorry, we're full!"
   end
 
 end

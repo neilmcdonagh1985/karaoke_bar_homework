@@ -12,6 +12,10 @@ class Guest
     pub.allow_entry_to_pub(self)
   end
 
+  def request_room_entry(room)
+    room.allow_entry_to_room(self)
+  end
+
 
 
 end
