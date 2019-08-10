@@ -5,7 +5,7 @@ class Room
   def initialize(capacity)
     @capacity = capacity
     @playlist = []
-    @people_in_room = 0
+    @people_in_room = []
     # @song_currently_playing = @playlist.pop
   end
 
@@ -18,8 +18,8 @@ class Room
   end
 
   def allow_entry_to_room(guest)
-    if @people_in_room < @capacity
-      @people_in_room += 1
+    if @people_in_room.count < @capacity
+      @people_in_room << guest
     else
       return "Sorry, this room is full!"
     end

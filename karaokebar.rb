@@ -16,12 +16,14 @@ class Karaoke_bar
     @rooms << room
   end
 
-  def allow_entry_to_pub(guest)
-    if @people_in_pub < @total_capacity
+def allow_entry_to_pub(guest)
+  if guest.wallet < self.entry_fee
+    return "No' the night, pal."
+  elsif @people_in_pub < @total_capacity
     @people_in_pub += 1
   else
     return "Sorry, we're full!"
   end
-  end
+end
 
 end

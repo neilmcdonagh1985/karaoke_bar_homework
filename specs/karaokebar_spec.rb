@@ -13,7 +13,8 @@ class TestKaraokebar < MiniTest::Test
     @room2 = Room.new(20)
     @guest1 = Guest.new('Brian', 40, 'Song 2')
     @guest2 = Guest.new('Lisa', 20, 'Blue Monday')
-    @guest3 = Guest.new('Dave', 10, 'Live Forever')
+    @guest3 = Guest.new('Dave', 4, 'Live Forever')
+    @guest4 = Guest.new('Simon', 10, 'Walk Away')
   end
 
   def test_name_of_karaoke_bar
@@ -54,7 +55,11 @@ class TestKaraokebar < MiniTest::Test
   def test_allow_entry_to_pub__no
     @karaokebar.allow_entry_to_pub(@guest1)
     @karaokebar.allow_entry_to_pub(@guest2)
-    assert_equal("Sorry, we're full!", @karaokebar.allow_entry_to_pub(@guest3))
+    assert_equal("Sorry, we're full!", @karaokebar.allow_entry_to_pub(@guest4))
+  end
+
+  def test_customer_cannot_afford_entry
+    assert_equal("No' the night, pal.", @karaokebar.allow_entry_to_pub(@guest3))
   end
 
 

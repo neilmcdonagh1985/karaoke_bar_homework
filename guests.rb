@@ -16,6 +16,14 @@ class Guest
     room.allow_entry_to_room(self)
   end
 
+  def pay_entry_fee(pub)
+    @wallet -= pub.entry_fee
+  end
+
+  def leave_room(room)
+    room.people_in_room.delete(self)
+  end
+
 
 
 end

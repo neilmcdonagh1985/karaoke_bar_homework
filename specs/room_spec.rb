@@ -21,7 +21,7 @@ class TestRoom < MiniTest::Test
   end
 
   def test_number_of_people_currently_in_room
-    assert_equal(0, @room1.people_in_room)
+    assert_equal(0, @room1.people_in_room.count)
   end
 
   def test_playlist_exists
@@ -40,7 +40,7 @@ class TestRoom < MiniTest::Test
 
   def test_allow_entry_to_room__yes
     @room1.allow_entry_to_room(@guest1)
-    assert_equal(1, @room1.people_in_room)
+    assert_equal(1, @room1.people_in_room.count)
   end
 
   def test_allow_entry_to_room__no
@@ -48,6 +48,11 @@ class TestRoom < MiniTest::Test
     @room1.allow_entry_to_room(@guest2)
     assert_equal("Sorry, this room is full!", @room1.allow_entry_to_room(@guest3))
   end
+
+  # def checkout_guest_from_room
+  #   @room1.checkout_guest_from_room(@guest1)
+  #   assert_equal(2, @room1.people_in_room.count)
+  # end
 
   # to shuffle playlist and test, could try to create an empty array, selecting random items out of the filled
   # array, then loading them into the empty one, recording which ones have been played. The test could be
