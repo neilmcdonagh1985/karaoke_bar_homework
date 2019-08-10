@@ -20,6 +20,7 @@ class Room
   def allow_entry_to_room(guest)
     if @people_in_room.count < @capacity
       @people_in_room << guest
+      guest.update_current_room(self)
     else
       return "Sorry, this room is full!"
     end
